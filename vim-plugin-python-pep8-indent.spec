@@ -9,23 +9,22 @@ Group:		Applications/Editors/Vim
 Source0:	https://github.com/hynek/vim-python-pep8-indent/archive/master.tar.gz
 # Source0-md5:	8b1174311aedccb17807c9cac7c5baee
 URL:		https://github.com/hynek/vim-python-pep8-indent
-Requires:	vim-rt >= 4:7.2.170
+Requires:	vim-rt >= 4:6.3.058-3
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_vimdatadir	%{_datadir}/vim
+%define		_vimdatadir	%{_datadir}/vim/vimfiles
 
 %description
-A nicer Python indentation style for vim.
+A nicer Python indentation style for Vim.
 
 %prep
 %setup -q -n vim-%{plugin}-master
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
 install -d $RPM_BUILD_ROOT%{_vimdatadir}/indent
-cp -a indent/python.vim $RPM_BUILD_ROOT%{_vimdatadir}/indent
+cp -p indent/python.vim $RPM_BUILD_ROOT%{_vimdatadir}/indent
 
 %clean
 rm -rf $RPM_BUILD_ROOT
